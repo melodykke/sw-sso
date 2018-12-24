@@ -66,8 +66,6 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService)
                 .setClientDetailsService(clientDetails());
-
-        
         if (jwtAccessTokenConverter != null && jwtTokenEnhancer != null) {
             TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
             List<TokenEnhancer> enhancers = new ArrayList<>();
