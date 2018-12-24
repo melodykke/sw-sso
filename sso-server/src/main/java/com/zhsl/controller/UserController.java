@@ -3,7 +3,6 @@ package com.zhsl.controller;
 import com.zhsl.dto.UserInfoDTO;
 import com.zhsl.enums.SysEnum;
 import com.zhsl.exception.SysException;
-import com.zhsl.model.UserInfo;
 import com.zhsl.properties.SecurityProperties;
 import com.zhsl.service.UserService;
 import com.zhsl.util.ResultUtil;
@@ -14,8 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,10 +45,10 @@ public class UserController {
     public Object getBasicUserInfo(Authentication user, HttpServletRequest request) throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException, UnsupportedEncodingException {
         String token = StringUtils.substringAfter(request.getHeader("Authorization"), "Bearer ");
 
-		Claims claims = Jwts.parser().setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes("UTF-8"))
+		/*Claims claims = Jwts.parser().setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes("UTF-8"))
 					.parseClaimsJws(token).getBody();
 
-		String company = (String) claims.get("company");
+		String company = (String) claims.get("company");*/
 
 		String username = (String) user.getPrincipal();
         if (username == null || "".equals(username)) {
@@ -62,7 +59,7 @@ public class UserController {
         Map<String, Object> basic_user_info = new HashMap<>();
         basic_user_info.put("user_id", userInfoVO.getUserId());
         basic_user_info.put("username", username);
-        basic_user_info.put("company", company);
+        // basic_user_info.put("company", company);
         basic_user_info.put("authorities", user.getAuthorities());
         return basic_user_info;
     }

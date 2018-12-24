@@ -37,7 +37,8 @@ public class SsoResourceServerConfig extends ResourceServerConfigurerAdapter {
 				.successHandler(authenticationSuccessHandler)
 				.failureHandler(authenticationFailureHandler)
 					.and()
-				.authorizeRequests().anyRequest().authenticated()
+				.authorizeRequests().antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL).permitAll()
+				.anyRequest().authenticated()
 					.and()
 				.csrf().disable();
         //http.formLogin().and().authorizeRequests().anyRequest().authenticated();
