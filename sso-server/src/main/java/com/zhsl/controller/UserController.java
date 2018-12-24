@@ -60,7 +60,7 @@ public class UserController {
         basic_user_info.put("user_id", userInfoVO.getUserId());
         basic_user_info.put("username", username);
         // basic_user_info.put("company", company);
-        basic_user_info.put("authorities", user.getAuthorities());
+        // basic_user_info.put("authorities", user.getAuthorities());
         return basic_user_info;
     }
 

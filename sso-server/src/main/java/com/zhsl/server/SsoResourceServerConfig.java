@@ -14,8 +14,6 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 
 /**
  * 资源服务器配置
- * 
- * @author zhailiang
  *
  */
 @Configuration

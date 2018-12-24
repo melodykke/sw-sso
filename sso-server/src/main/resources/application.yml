@@ -9,7 +9,7 @@ spring:
     filters: stat
     driver-class-name: com.mysql.jdbc.Driver
     #基本属性
-    url: jdbc:mysql://192.168.100.239:3306/swsso?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.31.114:3306/swsso?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: ENC(rI8z9MJjnBABCkmg0RXaoA==)
     password: ENC(XILNV34tmDsPQd8UwEqkdhpprCvLCBYn)
     #配置初始化大小/最小/最大

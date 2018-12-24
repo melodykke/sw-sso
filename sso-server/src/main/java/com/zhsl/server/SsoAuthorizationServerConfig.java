@@ -80,7 +80,7 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
      * tokenKey的访问权限表达式配置
      */
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.tokenKeyAccess("permitAll()");
+        security.allowFormAuthenticationForClients().tokenKeyAccess("permitAll()");
     }
 
     /**
