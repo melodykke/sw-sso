@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhsl.mapper.OauthClientDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.zhsl.model.OauthClientDetails">
+    <id column="client_id" jdbcType="VARCHAR" property="clientId" />
+    <result column="client_name" jdbcType="VARCHAR" property="clientName" />
+    <result column="client_desc" jdbcType="VARCHAR" property="clientDesc" />
+    <result column="resource_ids" jdbcType="VARCHAR" property="resourceIds" />
+    <result column="client_secret" jdbcType="VARCHAR" property="clientSecret" />
+    <result column="scope" jdbcType="VARCHAR" property="scope" />
+    <result column="authorized_grant_types" jdbcType="VARCHAR" property="authorizedGrantTypes" />
+    <result column="web_server_redirect_uri" jdbcType="VARCHAR" property="webServerRedirectUri" />
+    <result column="authorities" jdbcType="VARCHAR" property="authorities" />
+    <result column="access_token_validity" jdbcType="INTEGER" property="accessTokenValidity" />
+    <result column="refresh_token_validity" jdbcType="INTEGER" property="refreshTokenValidity" />
+    <result column="additional_information" jdbcType="VARCHAR" property="additionalInformation" />
+    <result column="autoapprove" jdbcType="VARCHAR" property="autoapprove" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from oauth_client_details
+    where client_id = #{clientId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zhsl.model.OauthClientDetails">
+    insert into oauth_client_details (client_id, client_name, client_desc, 
+      resource_ids, client_secret, `scope`, 
+      authorized_grant_types, web_server_redirect_uri, 
+      authorities, access_token_validity, refresh_token_validity, 
+      additional_information, autoapprove, user_id)
+    values (#{clientId,jdbcType=VARCHAR}, #{clientName,jdbcType=VARCHAR}, #{clientDesc,jdbcType=VARCHAR}, 
+      #{resourceIds,jdbcType=VARCHAR}, #{clientSecret,jdbcType=VARCHAR}, #{scope,jdbcType=VARCHAR}, 
+      #{authorizedGrantTypes,jdbcType=VARCHAR}, #{webServerRedirectUri,jdbcType=VARCHAR}, 
+      #{authorities,jdbcType=VARCHAR}, #{accessTokenValidity,jdbcType=INTEGER}, #{refreshTokenValidity,jdbcType=INTEGER}, 
+      #{additionalInformation,jdbcType=VARCHAR}, #{autoapprove,jdbcType=VARCHAR}, #{userId, jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zhsl.model.OauthClientDetails">
+    update oauth_client_details
+    set client_name = #{clientName,jdbcType=VARCHAR},
+      client_desc = #{clientDesc,jdbcType=VARCHAR},
+      resource_ids = #{resourceIds,jdbcType=VARCHAR},
+      client_secret = #{clientSecret,jdbcType=VARCHAR},
+      `scope` = #{scope,jdbcType=VARCHAR},
+      authorized_grant_types = #{authorizedGrantTypes,jdbcType=VARCHAR},
+      web_server_redirect_uri = #{webServerRedirectUri,jdbcType=VARCHAR},
+      authorities = #{authorities,jdbcType=VARCHAR},
+      access_token_validity = #{accessTokenValidity,jdbcType=INTEGER},
+      refresh_token_validity = #{refreshTokenValidity,jdbcType=INTEGER},
+      additional_information = #{additionalInformation,jdbcType=VARCHAR},
+      autoapprove = #{autoapprove,jdbcType=VARCHAR}
+      user_id = #{userId, jdbcType=VARCHAR}
+    where client_id = #{clientId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select client_id, client_name, client_desc, resource_ids, client_secret, `scope`, 
+    authorized_grant_types, web_server_redirect_uri, authorities, access_token_validity, 
+    refresh_token_validity, additional_information, autoapprove, user_id
+    from oauth_client_details
+    where client_id = #{clientId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select client_id, client_name, client_desc, resource_ids, client_secret, `scope`, 
+    authorized_grant_types, web_server_redirect_uri, authorities, access_token_validity, 
+    refresh_token_validity, additional_information, autoapprove, user_id
+    from oauth_client_details
+  </select>
+</mapper>
